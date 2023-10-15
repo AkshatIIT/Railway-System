@@ -1,0 +1,80 @@
+Bad Date
+Bad Booking Date
+BOOKING SUCCEEDED:
+PNR Number = 1
+From Station = Kolkata
+To Station = Chennai
+Reservation Date = 1/1/2021
+Travel Date = 1/1/2021
+Travel Class = FirstClass
+ : Fare Load Factor: 3
+ : Mode: Sleeping
+ : Comfort: Non-AC
+ : Bunks: 2
+ : Luxury: Yes
+ : Reservation Charge: 50
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 500
+Fare = 672
+
+Bad Booking Date
+BOOKING SUCCEEDED:
+PNR Number = 2
+From Station = Kolkata
+To Station = Chennai
+Reservation Date = 1/1/2021
+Travel Date = 1/1/2021
+Travel Class = FirstClass
+ : Fare Load Factor: 3
+ : Mode: Sleeping
+ : Comfort: Non-AC
+ : Bunks: 2
+ : Luxury: Yes
+ : Reservation Charge: 50
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 500
+Fare = 672
+
+Invalid Name
+Invalid Mobile
+Invalid Aadhar
+BOOKING SUCCEEDED:
+PNR Number = 3
+From Station = Kolkata
+To Station = Chennai
+Reservation Date = 9/4/2021
+Travel Date = 26/5/2021
+Travel Class = FirstClass
+ : Fare Load Factor: 3
+ : Mode: Sleeping
+ : Comfort: Non-AC
+ : Bunks: 2
+ : Luxury: Yes
+ : Reservation Charge: 50
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 500
+Fare = 672
+
+Divyaang Error
+Category Error
+Same Station Invalid
+BOOKING SUCCEEDED:
+PNR Number = 4
+From Station = 
+To Station = 
+Reservation Date = 9/4/2021
+Travel Date = 26/5/2021
+Travel Class = FirstClass
+ : Fare Load Factor: 3
+ : Mode: Sleeping
+ : Comfort: Non-AC
+ : Bunks: 2
+ : Luxury: Yes
+ : Reservation Charge: 50
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 500
+Fare = 50

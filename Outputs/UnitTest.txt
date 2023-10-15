@@ -1,0 +1,205 @@
+=========================Testing Railways Class==============================
+
+=== Testing operator << ===
+Indian Railways
+List of all Stations
+Mumbai
+Delhi
+Bangalore
+Kolkata
+Chennai
+
+Distance between stations
+Bangalore -> Chennai = 350
+Bangalore -> Delhi = 2150
+Bangalore -> Kolkata = 1871
+Bangalore -> Mumbai = 981
+Chennai -> Bangalore = 350
+Chennai -> Delhi = 2180
+Chennai -> Kolkata = 1659
+Chennai -> Mumbai = 1338
+Delhi -> Bangalore = 2150
+Delhi -> Chennai = 2180
+Delhi -> Kolkata = 1472
+Delhi -> Mumbai = 1447
+Kolkata -> Bangalore = 1871
+Kolkata -> Chennai = 1659
+Kolkata -> Delhi = 1472
+Kolkata -> Mumbai = 2014
+Mumbai -> Bangalore = 981
+Mumbai -> Chennai = 1338
+Mumbai -> Delhi = 1447
+Mumbai -> Kolkata = 2014
+
+===Testing GetDistance() Method ===
+Distance between Mumbai and Delhi: 1447
+
+=========================Testing Station Class===============================
+
+=== Testing Construction ===
+Address of Constructed Object: 0x7ffd1fa9de10
+=== Testing GetName() Method ===
+Name: Kolkata
+=== Testing operator << ===
+Kolkata Mumbai
+=== Testing GetDistance() Method ===
+Distance= 2014
+Distance between Chennai and Kolkata = 1659
+
+=========================Testing Date Class====================================
+
+=== Testing Construction ===
+Address of Constructed Object: 0x7ffd1fa9de80
+=== Testing operator << ===
+28/2/2001
+=== Testing exception ===
+Bad Date
+29/2/2021
+
+=========================Testing Passenger Class==============================
+=== Testing Constructor ===
+ISHAN Abd 
+ : Date of Birth: 28/2/2001
+ : Gender: Male
+ : Aadhar: d8d73g28h221
+ : Mobile: 7602045111
+ : Disability Type: 1ow1
+
+=== Testing Exceptions ===
+Invalid Aadhar
+ISHAN Abd 
+ : Date of Birth: 28/2/2001
+ : Gender: Male
+ : Aadhar: 
+ : Mobile: 7602045111
+ : Disability Type: 1ow1
+
+
+=========================Testing Booking Classes Class=========================
+
+=== Testing operator << for every Booking Class ===
+
+ACFirstClass
+ : Fare Load Factor: 6.5
+ : Mode: Sleeping
+ : Comfort: AC
+ : Bunks: 2
+ : Luxury: Yes
+ : Reservation Charge: 60
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 500
+
+AC2Tier
+ : Fare Load Factor: 4
+ : Mode: Sleeping
+ : Comfort: AC
+ : Bunks: 2
+ : Luxury: No
+ : Reservation Charge: 50
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 500
+
+AC3Tier
+ : Fare Load Factor: 2.5
+ : Mode: Sleeping
+ : Comfort: AC
+ : Bunks: 3
+ : Luxury: No
+ : Reservation Charge: 40
+ : Min Tatkal Charge : 300
+ : Max Tatkal Charge : 400
+ : Min Tatkal Distance : 500
+
+ACChairCar
+ : Fare Load Factor: 2
+ : Mode: Sitting
+ : Comfort: AC
+ : Bunks: 0
+ : Luxury: No
+ : Reservation Charge: 40
+ : Min Tatkal Charge : 125
+ : Max Tatkal Charge : 225
+ : Min Tatkal Distance : 250
+
+ExecutiveChairCar
+ : Fare Load Factor: 5
+ : Mode: Sitting
+ : Comfort: AC
+ : Bunks: 0
+ : Luxury: Yes
+ : Reservation Charge: 60
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 250
+
+FirstClass
+ : Fare Load Factor: 3
+ : Mode: Sleeping
+ : Comfort: Non-AC
+ : Bunks: 2
+ : Luxury: Yes
+ : Reservation Charge: 50
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 500
+
+SecondSitting
+ : Fare Load Factor: 0.6
+ : Mode: Sitting
+ : Comfort: Non-AC
+ : Bunks: 0
+ : Luxury: No
+ : Reservation Charge: 15
+ : Min Tatkal Charge : 10
+ : Max Tatkal Charge : 15
+ : Min Tatkal Distance : 100
+
+Sleeper
+ : Fare Load Factor: 1
+ : Mode: Sleeping
+ : Comfort: Non-AC
+ : Bunks: 3
+ : Luxury: No
+ : Reservation Charge: 20
+ : Min Tatkal Charge : 100
+ : Max Tatkal Charge : 200
+ : Min Tatkal Distance : 500
+
+Fare Loaded Factor of ACFirstClass from Virtual GetLoadFactor() Method = 6.5
+Fare Loaded Factor of AC2Tier from Virtual GetLoadFactor() Method = 4
+Fare Loaded Factor of AC3Tier from Virtual GetLoadFactor() Method = 2.5
+Fare Loaded Factor of ACChairCar from Virtual GetLoadFactor() Method = 2
+Fare Loaded Factor of ExecutiveChairCar from Virtual GetLoadFactor() Method = 5
+Fare Loaded Factor of FirstClass from Virtual GetLoadFactor() Method = 3
+Fare Loaded Factor of SecondSitting from Virtual GetLoadFactor() Method = 0.6
+Fare Loaded Factor of Sleeper from Virtual GetLoadFactor() Method = 1
+
+=========================Testing Category Class===============================
+
+=========================Testing Construction of every Class====================================
+Constructing General Object
+Address of General Category : 0x5574d0fa5178
+===================================================================================================
+Constructing Tatkal Object
+Address of Tatkal Category : 0x5574d0fa5188
+===================================================================================================
+Constructing PremiumTatkal Object
+Address of PremiumTatkal Category : 0x5574d0fa5198
+===================================================================================================
+Constructing SeniorCitizen Object
+Address of SeniorCitizen Category : 0x5574d0fa51a8
+===================================================================================================
+Constructing Blind Object
+Address of Blind Category : 0x5574d0fa51b8
+===================================================================================================
+Constructing OH Object
+Address of OH Category : 0x5574d0fa51c8
+===================================================================================================
+Constructing TB Object
+Address of TB Category : 0x5574d0fa51d8
+===================================================================================================
+Constructing Cancer Object
+Address of Cancer Category : 0x5574d0fa51e8
+===================================================================================================

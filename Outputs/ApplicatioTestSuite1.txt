@@ -1,0 +1,143 @@
+BOOKING SUCCEEDED:
+PNR Number = 1
+From Station = Mumbai
+To Station = Kolkata
+Reservation Date = 9/4/2021
+Travel Date = 20/4/2021
+Travel Class = AC3Tier
+ : Fare Load Factor: 2.5
+ : Mode: Sleeping
+ : Comfort: AC
+ : Bunks: 3
+ : Luxury: No
+ : Reservation Charge: 40
+ : Min Tatkal Charge : 300
+ : Max Tatkal Charge : 400
+ : Min Tatkal Distance : 500
+Fare = 2558
+
+BOOKING SUCCEEDED:
+PNR Number = 2
+From Station = Bangalore
+To Station = Kolkata
+Reservation Date = 9/4/2021
+Travel Date = 10/4/2021
+Travel Class = ACFirstClass
+ : Fare Load Factor: 6.5
+ : Mode: Sleeping
+ : Comfort: AC
+ : Bunks: 2
+ : Luxury: Yes
+ : Reservation Charge: 60
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 500
+Fare = 6641
+
+BOOKING SUCCEEDED:
+PNR Number = 3
+From Station = Bangalore
+To Station = Chennai
+Reservation Date = 9/4/2021
+Travel Date = 20/5/2021
+Travel Class = ACChairCar
+ : Fare Load Factor: 2
+ : Mode: Sitting
+ : Comfort: AC
+ : Bunks: 0
+ : Luxury: No
+ : Reservation Charge: 40
+ : Min Tatkal Charge : 125
+ : Max Tatkal Charge : 225
+ : Min Tatkal Distance : 250
+Fare = 640
+
+BOOKING SUCCEEDED:
+PNR Number = 4
+From Station = Delhi
+To Station = Chennai
+Reservation Date = 9/4/2021
+Travel Date = 20/6/2021
+Travel Class = Sleeper
+ : Fare Load Factor: 1
+ : Mode: Sleeping
+ : Comfort: Non-AC
+ : Bunks: 3
+ : Luxury: No
+ : Reservation Charge: 20
+ : Min Tatkal Charge : 100
+ : Max Tatkal Charge : 200
+ : Min Tatkal Distance : 500
+Fare = 674
+
+BOOKING SUCCEEDED:
+PNR Number = 5
+From Station = Kolkata
+To Station = Chennai
+Reservation Date = 9/4/2021
+Travel Date = 4/6/2021
+Travel Class = SecondSitting
+ : Fare Load Factor: 0.6
+ : Mode: Sitting
+ : Comfort: Non-AC
+ : Bunks: 0
+ : Luxury: No
+ : Reservation Charge: 15
+ : Min Tatkal Charge : 10
+ : Max Tatkal Charge : 15
+ : Min Tatkal Distance : 100
+Fare = 139
+
+BOOKING SUCCEEDED:
+PNR Number = 6
+From Station = Delhi
+To Station = Bangalore
+Reservation Date = 9/4/2021
+Travel Date = 20/6/2021
+Travel Class = ExecutiveChairCar
+ : Fare Load Factor: 5
+ : Mode: Sitting
+ : Comfort: AC
+ : Bunks: 0
+ : Luxury: Yes
+ : Reservation Charge: 60
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 250
+Fare = 1404
+
+BOOKING SUCCEEDED:
+PNR Number = 7
+From Station = Delhi
+To Station = Mumbai
+Reservation Date = 9/4/2021
+Travel Date = 20/6/2021
+Travel Class = AC3Tier
+ : Fare Load Factor: 2.5
+ : Mode: Sleeping
+ : Comfort: AC
+ : Bunks: 3
+ : Luxury: No
+ : Reservation Charge: 40
+ : Min Tatkal Charge : 300
+ : Max Tatkal Charge : 400
+ : Min Tatkal Distance : 500
+Fare = 40
+
+BOOKING SUCCEEDED:
+PNR Number = 8
+From Station = Kolkata
+To Station = Chennai
+Reservation Date = 9/4/2021
+Travel Date = 20/6/2021
+Travel Class = FirstClass
+ : Fare Load Factor: 3
+ : Mode: Sleeping
+ : Comfort: Non-AC
+ : Bunks: 2
+ : Luxury: Yes
+ : Reservation Charge: 50
+ : Min Tatkal Charge : 400
+ : Max Tatkal Charge : 500
+ : Min Tatkal Distance : 500
+Fare = 672
