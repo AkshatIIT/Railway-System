@@ -1,0 +1,262 @@
+									Railway Ticket Booking System
+											Design
+
+
+All classes have copy constructors defined. 
+
+Station Class:
+	Simple Station class with unique name
+	Attributes: 
+		1. const string name_: to store the station name. Const as it wont change after initialisation. Read only (private with getter function) as it should not be edited. 
+	Constructor: PRIVATE
+		Simple one paramter constructor. Private as it can only be called from CreateStation so that we dont throw exception from Constructor.
+	Methods:
+		1. static Station CreateStation(string name): PUBLIC
+			To create a Station object after checking validity of input (name part of list in Railways object). Used so that we do not throw exception from the constructor. Static as it does not belong to any object rather is used to create one. 
+		2.  string GetName() const: PUBLIC
+			returns the name of the station. Const function as it should not modify the station object. 
+		3. int GetDistance(const Station &other) const: PUBLIC
+			returns the distance of this station from other station.. Input const reference so that it cannot be changed and a copy is not made. Also a const function as it should not modify the station object. 
+	Friend Functions:
+		1. friend ostream& operator<<(ostream &os,const Station &s): 
+			Output stream operator. Takes const Station object reference as we should not be able to change the station. Returns ostream operator to allow chaining. Friend functions as it has to access private attributes. 
+
+Date Class:
+	Attibutes: PRIVATE
+		1. const unsigned int date_: to store the date as unsigned integer to ensure dates are only positive. Const as it wont change after initialisation.
+		2. const unsigned int month_:  to store the month number as unsigned integer to ensure months are only positive. Const as it wont change after initialisation.
+		3. const unsigned int year_:  to store the year as unsigned integer to ensure years are only positive. Const as it wont change after initialisation.
+		4. static const vector<string> sMonthNames: Stores the list of abbreviated month names. Static as this does not belong to any object. Const as it is a constant by nature. 
+	Constructor: PRIVATE
+		Private as it can only be called from CreateDate so that we dont throw exception from Constructor.
+		1. Date(UINT d,UINT m,UINT y): PRIVATE
+			Constructor using integers for date,month, year. For date format: dd/mm/yyyy
+		2. Date(UINT d,string m,UINT y): PRIVATE
+			Constructore using integers for day and year and string for month name. For date format: dd/MMM/yyyy where MMM is a 3 letter abbreviation for month
+		3. Date(string date): PRIVATE
+			Generate date from string representation of the date. For eg: "31/3/2021". 
+	Methods:
+		1. static CreateDate(int d,int m, int y): PUBLIC
+			To create Date object from integer date,month, year after checking validity of input. Used so that we do not throw exception from the constructor. Static as it does not belong to any object rather is used to create one. 
+		2. static CreateDate(int d,string m, int y): PUBLIC
+			To create Date object from integer date and year and string month after checking validity of input. Used so that we do not throw exception from the constructor. Static as it does not belong to any object rather is used to create one.
+		3. static CreateDate(string date): PUBLIC
+			To create Date object from string after checking validity of input. Used so that we do not throw exception from the constructor. Static as it does not belong to any object rather is used to create one. 
+		4. static bool OneYearSpan(Date &d): PUBLIC
+			Checks whether one year has been passed from given date from today. Used to check whether booking is being done for at max one year in advance. Static as is is a utility function of the class not of any object. 
+		5. static int CalculateAge(Date &d): PUBLIC
+			Calculates age of the person whoose date of birth is b. Used to calculate age of Passenger. Static as is is a utility function of the class not of any object. 
+		6. static bool IsLeap(int y): PUBLIC
+			Checks whether the given year is a leap year. Used to check validity of the date.
+	Friend Functions:
+		1. friend ostream& operator<<(ostream &os,const Date &d): 
+			Output stream operator. Takes const Date object reference as we should not be able to change the date. Returns ostream operator to allow chaining. Friend functions as it has to access private attributes. 
+		2. Comparision Operators: 
+			Functions to compare dates. Defined for ==, >=,<=, >,<. All of these are friend functions as they have to access private attributes. Used while checking validity of booking date and travel date. 
+	Other Points: 
+		1. IsValid function not made as the CreateDate itself checks for validity depending on format of input. 
+
+Railways Class: SINGLETON
+	Main Data class which has basic utilities and data of the system. 
+	Attributes:
+		1. static const vector<Station> sStations: List of all valid Stations. Const as does not change. Static as it does not belong to any object and is more of a data.
+		2. static map<pair<string,string>,int> sDistStations: Map storing distances between stations. Duplication is avoided. Static as it does not belong to any object. Not constant as we cannot access values of constant maps. Static as it does not belong to any object and is more of a data.
+		3. static vector<vector<int>,int> sDisabilityConcessionMatrix: Stores the disability concession matrix that has the divyang concession factor for each divyang type and booking class pair. Static as it does not belong to any object and is more of a data.
+	Constructor: PRIVATE
+		Private constructor to maintain singleton nature. 
+	Methods:
+		 1. static const Railways &railways(): PUBLIC
+		 	Function to make the Railways class a Meyer's Singleton. Returns static const object of the Railways class. Static as it is a utility function of the class. 
+		 2. int GetDistance(const Station &s1, const Station &s2) const: PUBLIC
+		 	Function to calculate distance between any two Stations. Takes input as const reference so that no copy is done and we cant change the Station. Const method as we should not modify the Railways class.
+	Friend Function:
+		1. Station Station::CreateStation(string name): 
+			This class needs to verify if the station is a part of the railways stations list. Therefore needs to access private member. 
+
+
+BookingClass Hierarchy: ABSTRACT BASE CLASS
+	Polymorphic Hierarchy with 8 child classes corresponding to each booking class. Created uisng parametric and inclusion polymorphism. Parametric as all the methods have same code just data is different. The data is represented as static variables of each class. All sub-classes are singletons. 
+	Attributes:
+		All static as they belong the class. Const as they cannot change once initialised. 
+		1. static const float sFareLoadFactor: stores the fare load factor for each class. 
+      	2. static const float sReservationCharge: stores the reservation charge for each class. 
+      	3. static const float sMinTatkalCharge: stores the minimum tatkal charge for each class. 
+      	4. static const float sMaxTatkalCharge: stores the maximum tatkal charge for each class. 
+      	5. static const float sTatkalLoadFactor: stores the tatkal load factor for each class.
+      	6. static const bool sIsSitting: Stores whether class is seat/berth.
+      	7. static const bool sIsAC: stores whether class has AC
+      	8. static const bool sIsLuxury: stores whether class is Luxury.
+      	9. static const int sNumTiers: stores number of tiers
+      	10. static const int sMinDistanceTatkal: Stores minimum distance to charge tatkal. 
+      	11. static const string sName: stores name of the booking class.
+     	Also has typedef BookingClasssType<ClassType> ClassName to templatise the children classes. 
+    Methods:
+      	1. static const BookingClassTypes<T> &Type(): 
+      		Function to make the BookignClass a Meyer's Singleton. Returns static const object of the booking class. Static as it is a utility function of the class. 
+      	Rest are static getter functions of the attibutes. Const as they should not modify the class. Static as they are utility fucntions of the class.
+      	2. static bool IsSitting() const;
+		3. static int GetNumberOfTiers() const;
+		4. static string GetName() const;
+		5. static bool IsAC() const;
+		6. static bool IsLuxury() const;
+		7. static float GetFareLoadFactor() const;
+		8. static float GetReservationCharge() const;
+		9. static float GetMinTatkalCharge() const;
+		10. static float GetMaxTatkalCharge() const;
+		11. static float GetMinDistanceTatkal() const;
+		12. static float GetTatkalLoadFactor() const;
+	Hierarchy:
+		Has an one level hierarchy with one abstract base class and 8 child classes. 
+										
+						| - ACFirstClass
+						| - ExecutiveChairCar
+						| - AC2Tier
+		BookingClass -  | - FirstClass
+						| - AC3Tier
+						| - ACChairCar 
+						| - Sleeper
+						| - SecondSitting
+
+Divyang Class Hierarchy:
+	Polymorphic Hierarchy with an abstract base class and 4 child classes corresponing to each divyang type. 
+	Defined using Parametric  and Inclusion polymorphism. All sub-classes are singletons.
+	Is a part of the Booking Category Hierarchy.
+	Attibute: 
+		1. const string sType: static variable storing the type of divyang disability. Read Only
+		2. const string sId: store divyang ID to verify passenger. Read only.
+		Also has typedef DivyangType<ClassType> ClassName to templatise the children classes. 
+	Methods:
+		1. static string GetType() const: Getter for Type. Static.  
+		2. static string GetId() const: Getter for Id. Static.  
+		3. static const DivyangType<T> &Type():
+      		Function to make the Divyang class a Meyer's Singleton. Returns static const object of the divyang class. Static as it is a utility function of the class. 
+     Hierarchy: One Level Hierarchy. Polymorphic defined using templates
+
+					| - CancerPatient
+		Divyang -   | - TBPatient
+					| - Blind
+					| - OrthopaedicallyHandicapped
+
+
+BookingCategory Hierarchy: 
+	Polymorphic Hierarchy defined using Inclusion Polymorphism. Paramteric method not used as they have two methods checkValidity and createBooking that are diferent for each sub-class. All sub-classes are singletons.
+	Attibutes: 
+		1. static const string sName: static as property of the class. const as cannot be changed after initialisation. 
+		2. static const string sRemarks: static as property of the class. const as cannot be changed after initialisation. 
+	Methods:
+		1. const Booking & CreateBooking() const: 
+			Method to create corresponding booking object to calculate fare using Virtual Construction Idiom. Const as should not change the object. 
+		2.  bool CheckValidity() const: 
+			Method to check whether the passenger belongs to given category. Const as should not change the object. 
+	Hierarchy: One Level Polymorphic Hierarchy
+
+							| - General
+		   					| - Ladies
+		BookingCategory -	| - SeniorCitizen
+							| - Divyang 
+							| - Tatkal
+							| - PremiumTatkal
+
+Concession Hierarchy:
+	Polymorphic Hierarchy defined using ad-hoc Polymorphism as each has a getConcession function that is diffrerent for different booking Categories. Is Built parallely along bookingCategory but does not include Tatkal and Premium Tatkal as they do not have concession. All sub-classes are singletons.
+	Attributes:
+		1. float concessionFactor_: stores the concession factor before sending.
+	Methods:
+		1. float GetConcession(): 
+			Overloaded function for each child class.
+			General: GetConcession(): as it is zero independent of anything
+			Ladies: GetConcession(Passenger &p): Pasenger needed to check whether it is a female. This check will be done while allotting category too. 
+			SeniorCitizen: GetConcession(Passenger &p): Pasenger needed to check whether it is a female. or male as both have different concession. 
+			Divyang: GetConcession(Passenger &p, BookingClasss &c): Booking Class and Passenger needed as concession different for each divyang type and bookingClass.
+	Hierarchy: One Level Polymorphic
+
+					   | - GeneralConcession
+		Concession -   | - LadiesConcession
+					   | - SeniorCitizenConcession
+					   | - DivyangConcession
+
+Passenger Class: 
+	Simple data class to store info about the Passenger
+	Attributes:
+		All constant as cannot be changed once initialised. 
+		1. const string firstName_: optional is lastName given
+		2. const string lastName_: optional is firstName given
+		3. const string middleName_: optional
+		4. const dob_: date of birth
+		5. const string aadhar_: 
+		6. const string mobileNumber_:
+		7. const Gender &gender_:
+		8. const string disabilityType_:
+		9. const string disabilityId_:
+	Constructor:
+		One constructor with all paramters. Optional attibutes checked in CreatePassenger method.
+	Methods:
+		1.  const CreatePassenger(string f, Gender &g, string a, Date &d, string m="",
+                              string l = "", string mob = "", string disT = "",
+                              string disI = ""):
+            All non default members sent empty to this function as we will have to send empty input if we want to enter later parameter. 
+		2. static bool isValid(string f, Gender &g, string a, Date &d, string m,
+                      string l, string mob, string disT, string disI):
+            static as it is an utility function of the class. 
+    Friend Functions:
+		1. friend ostream& operator<<(ostream &os,const Passenger &p): 
+			Output stream operator. Takes const Passenger object reference as we should not be able to change the date. Returns ostream operator to allow chaining. Friend functions as it has to access private attributes. 
+
+Booking Hierarchy:
+	Polymorphic Hierarchy with abstract base class. Defined using Inclusion and Parametric polymorphism
+	Attibutes:
+		All const as cannot be changed after initialisation
+		1. const Station fromStation_: 
+		2. const Station toStation_:
+		3. const Date dateOfBooking_:
+		4. const Date dateOfReservation_:
+		5. const BookingClass &b_: taken by reference to maintain polynorphism
+		6. const Passenger &p: taken by reference so that we dont copy. 
+		7. const BookingCategory &bc_: taken by reference to maintain polynorphism
+	Methods: 
+		1. static Booking CreateBooking():
+			static function to breate a booking object and calculate fare. Calls the appropriate Booking Object according to category. 
+		2. int calcualteFare(): Calcualte Fare differently for each category. 
+	Hierarchy: Polymorphic One Level Parallel to the BookingCategory
+
+					| - GeneralBooking
+   					| - LadiesBooking
+		Booking -	| - SeniorCitizenBooking
+					| - DivyangBooking
+					| - TatkalBooking
+					| - PremiumTatkalBooking
+
+
+Exception Hierarchy:
+	Polymorphic class hierarchy to throw exceptions where error occur. 
+	Description
+		1. All inherit from exception class defined in <exception> header file. 
+	Methods:
+		1. char *print(): PUBLIC
+			returns print the error is. 
+	Constructors: PROTECTED
+		1. Virtual for Non-leaf classes. 
+		2. Empty for leaf classes.
+	Constructors: PUBLIC
+		1. Virtual for base class.  
+		2. Empty for leaf classes.
+	Hierarchy:
+									| - InvalidDate
+					| - Bad_Date  - | - Invalid Year
+					|
+					| - Bad_Station - | - BadStationName
+					|				  | - DuplicateStation
+					|				  | - DuplicateDistance
+		Exception - | 
+					| - Bad_Passenger - | - InvalidAadhar
+					|					| - InvalidNumber	
+					|					| - InvalidName
+					|					| - InvalidDOB
+					|					| - InvalidDisablityType
+					|					| - InvalidDisatbilityId
+					|
+					| - Bad_Booking - | - InvalidStation
+									  | - InvalidDateOfBooking
+									  | - InvalidCategory
+
+

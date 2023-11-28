@@ -1,0 +1,177 @@
+Name: Shrinivas Khiste
+Roll number: 19CS30043
+
+Application:
+Tested for different booking Classes and random stations between them. 
+
+Class Name: Booking
+Test Scenarios
+1. Construction: 
+    Function Call: 
+        b1= Booking::BookASeat(f, t, bo, r, BookingClasses::AC3Tier::Type(),
+                                  p, General::Type());
+        b2=Booking::BookASeat(f, t, bo, r, BookingClasses::AC3Tier::Type(),
+                                  p, Tatkal::Type());
+2. Compute Fair Function
+    a. Booking Class is not Tatkal
+        Function Call: b1.ComputeFair()
+        Golden Output: 1849
+    b. Booking Class is Tatkal Type
+        Function Call: b2.ComputeFair()
+        Golden Output: 2143
+
+Class Name: Station
+Test Scenarios 
+1. Constructor
+    Function Call: s=Station::CreateStation("Mumbai")
+2. Get Name Function
+    Function Call: s.GetName()
+    Golden Output: Mumbai
+3. Get Distance Function
+    Function Call: s.GetDistance(s2)
+    Golden Output: 1447
+4. Exceptions
+    a. Name is empty
+    Function Call: Station s1 = Station::CreateStation("");
+    Golden Output: ERROR: Invalid Station Name
+
+Class Name: Railways
+Test Scenarios
+1. GetDistance: One Order
+    Function Calls: Checked the distance between one pair of
+        stations in one order
+    Golden Output: 1447
+2. GetDistance: Reverse Order
+    Function Calls: Checked the distance between one pair of
+        stations in Reverse order
+    Golden Output: 1447
+
+Class Name: Date
+Test Scenarios
+1. Constructor
+    a. Function Call: Date::CreateDate(10, 3, 2021);
+    Just checking if each parameter is assigned the right value.
+
+    b. Function Call: Date::CreateDate(10, "Mar", 2021);;
+    Just checking if each parameter is assigned the right value.
+2. Exceptions
+    a. Invalid year:
+    Input: Date d = CreateDate(10, 4, 1800);
+    Golden Output: Error is Output
+    b. Invalid date: Months and dates correct but date not in calender like 31st Nov
+    Input: CreateDate(31, 11, 2021);
+    Golden Output: Error is Output
+    c. Invalid Month:
+    Input: CreateDate(10, 13, 2021);
+    Golden Output: Error is Output
+    c. Invalid Month in string:
+    Input: CreateDate(29, "mar", 2021);
+    Golden Output: Error is Output
+    d. Invalid Date in Feb non leap year
+    Input: CreateDate(29, "Feb", 2021);
+    Golden Output: Error is Output
+
+Class Name: Concession
+Test Scenarios
+1. Concession Factor
+    Checked Concession Factor for each Child Class for one Input
+    a. General
+    Input: gc.GetConcessionFactor()
+    Golden Output: 0
+    b. Ladies
+    Input: lc.GetConcessionFactor(p)
+    Golden Output: 0
+    c. SeniorCitizen
+    Input: sc.GetConcessionFactor(p)
+    Golden Output: 0.40
+    d. Divyang
+    Input: dc.GetConcessionFactor(p, BookingClasses::AC3Tier::Type())
+    Golden Output: 0.75
+
+Class Name: Booking Category
+Test Scenarios
+1. Check Name
+    lbc = Ladies::Type();
+    Function Call: lbc.GetName()
+    Golden Output: Ladies
+2. Validity
+    Checked validity function of each child class
+      DivyangType *d = DivyangType::Blind::Type();
+    Passenger p = Passenger::CreatePassenger("First", Gender::Male::Type(), "123456789012",
+                                 Date::CreateDate(12, 10, 1920), "", "", "", d);
+    Date r = Date::CreateDate(8, 4, 2021);
+    a. General
+    Function Call: gbc.CheckValidity(p, r)
+    Golden Output: true
+    b. Ladies
+    Function Call: gbc.CheckValidity(p, r)
+    Golden Output: false
+    c. SeniorCitizen
+    Function Call: gbc.CheckValidity(p, r)
+    Golden Output: true
+    d. Divyang
+    Function Call: gbc.CheckValidity(p, r)
+    Golden Output: true
+    e. Tatkal
+    Function Call: gbc.CheckValidity(p, r)
+    Golden Output: true
+    f. PremiumTatkal
+    Function Call: gbc.CheckValidity(p, r)
+    Golden Output: true
+
+Class Name: Passenger
+Test Scenarios
+1. Constructor
+    a. Only First Name No Last Name:
+    Function Call: Passenger::CreatePassenger("First", Gender::Male::Type(), "123456789012",
+                                 Date::CreateDate(12, 10, 2020));
+    b. Only Last Name No First Name: 
+    Function Call: Passenger::CreatePassenger("", Gender::Male::Type(), "123456789012",
+                                 Date::CreateDate(12, 10, 2020), "", "Last");
+2. Exceptions
+    a. Invalid Name: None of first and last Name
+    Function Call:Passenger::CreatePassenger("", Gender::Male::Type(), "123456789012",
+                                   Date::CreateDate(12, 10, 2020));
+    Golden Output: Error is Raised;
+    b. Invalid Aadhar: Not 12 digits
+    Function Call: Passenger::CreatePassenger("First", Gender::Male::Type(), "12345678901",
+                                   Date::CreateDate(12, 10, 2020));
+    Golden Output: Error is Raised
+    c. Invalid Number: Not 10 digits
+    FUnction call: Passenger::CreatePassenger("First", Gender::Male::Type(),
+                                              "123456789012",
+                                              Date::CreateDate(12, 10, 2021));
+    Golden Output: Error is Raised
+    d. Invalid Aadhar: Not all digits:
+    Function Call:Passenger p6 = Passenger::CreatePassenger(
+        "First", Gender::Male::Type(), "123456a89021",
+        Date::CreateDate(12, 10, 2020), "", "", "1234567890");                                     
+    Golden Output:Error is Raised
+    e. Invalid Number: Not all digits:
+    Function Call:Passenger p6 = Passenger::CreatePassenger(
+        "First", Gender::Male::Type(), "123456789021",
+        Date::CreateDate(12, 10, 2020), "", "", "12345a7890");                                     
+    Golden Output:Error is Raised
+    f. Invalid DOB:
+    Function Call:Passenger::CreatePassenger("First", Gender::Male::Type(),
+                                              "123456789012",
+                                              Date::CreateDate(12, 10, 2021));                                     
+    Golden Output:Error is Raised
+    g. Multiple Errors: 
+    Function Call: Passenger::CreatePassenger(
+        "First", Gender::Male::Type(), "12345a189021",
+        Date::CreateDate(12, 10, 2020), "", "", "12345a789");
+    Golden Output: Multiple Errors Raised 
+
+Class Name: Booking Classes
+Test Scenarios
+    Is a data class therefore no tests are required
+
+Class Name: Divyang
+Test Scenarios
+    Is a data class therefore no tests are required
+
+Class Name: Gender
+Test Scenarios
+    Is a data class therefore no tests are required
+

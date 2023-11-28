@@ -1,0 +1,51 @@
+Test Plan
+Shrinivas Khiste 
+19CS30043
+
+APPLICATION TESTING
+
+POSITIVE TEST CASES (Expected Confirm Booking):
+For this, we should test the application for selected booking categories and Booking classes
+
+Test Scenarios:
+Tested for some standard inputs and checked the ouptut 
+
+Unit Testing
+Done for all important classes. Major Functionality has been tested.
+
+1) Station:
+    a) Creating station objects
+    b) Testing GetDistance Function
+
+2) Railways:
+    a) Creating Various objects
+    b) Testing GetDistance Function
+
+3) Passenger:
+    a) Valid All inputs
+    b) Invalid Name
+        Output : Should Raise Exception: InvalidName
+    c) InvalidAadharNumber:
+        Output: Should Raise Exception: InvalidAadharNumber
+    d) Invalid Mobile Number:
+        Output: Should Raise Exception: invalid Mobile Number
+    e) Invalid DOB:
+    Output: Should Raise Exception: invalid DOB
+    
+
+4) Date:
+    a) Creating objects
+    b) Testing All Functions
+    c) Checking Exceptions Raised
+
+5) Concession:
+    a) Confirming the concession Factors stored using if else
+
+    
+6) Booking Category
+    a) Checking the exceptions raised and positive passed for VerifyBookingCategory Function
+
+7) Booking :
+    a) Creating Different Booking 
+        i) Checking the data stored
+        ii) Checking Expection Raised
